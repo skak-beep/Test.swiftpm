@@ -8,12 +8,13 @@ struct ContentView: View {
         VStack {
             Spacer()
 
-            // 履歴表示（上から古い順、薄くなる）
+            // 履歴表示（下から新しい順、上に行くほど薄くなる）
             VStack(spacing: 5) {
-                ForEach(Array(history.enumerated()), id: \.offset) { index, number in
+                ForEach(Array(history.reversed().enumerated()), id: \.offset) { index, number in
+                    let opacityValue = 0.15 + 0.7 * Double(index) / Double(max(history.count - 1, 1))
                     Text("\(number)")
                         .font(.system(size: 40, weight: .medium))
-                        .opacity(1.0 - Double(index) * 0.15)
+                        .opacity(opacityValue)
                 }
             }
             .padding(.bottom, 20)
