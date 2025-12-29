@@ -1,4 +1,5 @@
-// swift-tools-version: 5.8
+// swift-tools-version: 5.5
+
 import PackageDescription
 
 let package = Package(
@@ -7,23 +8,9 @@ let package = Package(
         .iOS(.v15)
     ],
     products: [
-        .iOSApplication(
+        .executable(
             name: "Test",
-            targets: ["AppModule"],
-            displayVersion: "1.0",
-            bundleVersion: "1",
-            appIcon: .placeholder(icon: .house),
-            accentColor: .presetColor(.blue),
-            supportedDeviceFamilies: [
-                .pad,
-                .phone
-            ],
-            supportedInterfaceOrientations: [
-                .portrait,
-                .landscapeRight,
-                .landscapeLeft,
-                .portraitUpsideDown(.when(deviceFamilies: [.pad]))
-            ]
+            targets: ["AppModule"]
         )
     ],
     targets: [
