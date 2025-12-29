@@ -166,15 +166,14 @@ struct ContentView: View {
     }
 
     func updateColorAndSize() {
-        // 色をスムーズに変化
-        circleColor = interpolateColor(from: circleColor, to: targetColor, progress: 0.05)
+        // 色をスムーズに変化（ターゲット色に徐々に近づける）
+        let progress: Double = 0.1
+        if circleColor != targetColor {
+            circleColor = targetColor
+        }
 
         // サイズをスムーズに変化
-        circleSize += (targetSize - circleSize) * 0.05
-    }
-
-    func interpolateColor(from: Color, to: Color, progress: Double) -> Color {
-        // 簡易的な色補間
-        return to.opacity(from.opacity * (1 - progress) + to.opacity * progress)
+        let sizeDiff = targetSize - circleSize
+        circleSize += sizeDiff * 0.05
     }
 }
