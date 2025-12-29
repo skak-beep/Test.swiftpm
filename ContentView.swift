@@ -37,7 +37,7 @@ struct ContentView: View {
                     .trim(from: 0, to: progress)
                     .stroke(
                         isWorking ? Color.blue : Color.green,
-                        style: StrokeStyle(lineWidth: 30, lineCap: .round)
+                        style: StrokeStyle(lineWidth: 30, lineCap: .butt)
                     )
                     .frame(width: 250, height: 250)
                     .rotationEffect(.degrees(-90))
